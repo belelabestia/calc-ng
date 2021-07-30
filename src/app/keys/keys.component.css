@@ -1,0 +1,133 @@
+:host {
+    padding: 2px;
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+}
+
+.button:active::before {
+    border-radius: 8px;
+    content: '';
+    background-color: rgba(245, 227, 70, 0.7);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.button:hover {
+    border-radius: 8px;
+    background-color: rgba(93, 93, 93, 0.7);
+}
+
+.button {
+    border-radius: 8px;
+    color: white;
+    background-color: #222222;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    position: relative;
+}
+
+.button.digit[ng-reflect-digit="0"] {
+    grid-row: 5;
+    grid-column: 1;
+}
+
+.button.digit[ng-reflect-digit="1"] {
+    grid-row: 4;
+    grid-column: 1;
+}
+
+.button.digit[ng-reflect-digit="2"] {
+    grid-row: 4;
+    grid-column: 2;
+}
+
+.button.digit[ng-reflect-digit="3"] {
+    grid-row: 4;
+    grid-column: 3;
+}
+
+.button.digit[ng-reflect-digit="4"] {
+    grid-row: 3;
+    grid-column: 1;
+}
+
+.button.digit[ng-reflect-digit="5"] {
+    grid-row: 3;
+    grid-column: 2;
+}
+
+.button.digit[ng-reflect-digit="6"] {
+    grid-row: 3;
+    grid-column: 3;
+}
+
+.button.digit[ng-reflect-digit="7"] {
+    grid-row: 2;
+    grid-column: 1;
+}
+
+.button.digit[ng-reflect-digit="8"] {
+    grid-row: 2;
+    grid-column: 2;
+}
+
+.button.digit[ng-reflect-digit="9"] {
+    grid-row: 2;
+    grid-column: 3;
+}
+
+.button.operator[data-symbol="+"] {
+    background: rgb(0, 0, 0);
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.button.operator[data-symbol="-"] {
+    background: rgb(0, 0, 0);
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.button.operator[data-symbol="*"] {
+    background: rgb(0, 0, 0);
+    grid-row: 1;
+    grid-column: 3;
+}
+
+.button.operator[data-symbol="/"] {
+    background: rgb(0, 0, 0);
+    grid-row: 1;
+    grid-column: 4;
+}
+
+.button.equals {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.7539390756302521) 100%, rgba(0, 0, 0, 1) 100%);
+    grid-row: 2 / 6;
+    grid-column: 4;
+}
+
+.button.cancel {
+    grid-row: 5;
+    grid-column: 3;
+}
+
+.button.decimal-separator {
+    grid-row: 5;
+    grid-column: 2;
+}
+
+.button.operator:hover, .button.cancel:hover, .button.decimal-separator:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.button.equals:hover {
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 1);
+}

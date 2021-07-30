@@ -1,0 +1,8 @@
+<app-digit-button *ngFor="let d of digits" [digit]="d" (click)="digit.emit(d)"></app-digit-button>
+<app-special-button [type]="SpecialButtons.DecimalSeparator" (click)="decimalSeparator.emit()" ></app-special-button>
+<app-operator-button [operator]="Operators.Add" (click)="operator.emit(Operators.Add)" ></app-operator-button>
+<app-operator-button [operator]="Operators.Subtract" (click)="operator.emit(Operators.Subtract)" ></app-operator-button>
+<app-operator-button [operator]="Operators.Multiply" (click)="operator.emit(Operators.Multiply)" ></app-operator-button>
+<app-operator-button [operator]="Operators.Divide" (click)="operator.emit(Operators.Divide)" ></app-operator-button>
+<app-special-button [type]="SpecialButtons.Equals" (click)="equals.emit()" ></app-special-button>
+<app-special-button [type]="SpecialButtons.Cancel" (click)="cancel.emit()" ></app-special-button>
