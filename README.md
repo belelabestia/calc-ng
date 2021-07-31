@@ -1,7 +1,7 @@
 # Calc NG
 
-Clone in Angular di React Calc.
+Clone in Angular di [React Calc](https://github.com/belelabestia/react-calc):
 
-## Bachi noti
-
-Sottraendo per un numero decimale e poi ripetendo l'uguale succedono cose strane.
+- due app gemelle
+- fatte con due framework alternativi
+- con due stili di programmazione diversi
