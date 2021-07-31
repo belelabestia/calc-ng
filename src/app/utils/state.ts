@@ -1,4 +1,4 @@
-import { Operator } from "./operators";
+import { Operator, Operators } from "./operators";
 
 interface StateProps {
   readonly partial: string;
@@ -15,11 +15,20 @@ export class State implements StateProps {
 
   constructor(readonly props: StateProps) { }
 
-  resetIfNeeded(initial: State): StateProps {
-    return this.props.reset ? initial.props : this.props;
+  resetIfNeeded(): StateProps {
+    return this.props.reset ? State.initial().props : this.props;
   }
 
   calc(): string {
     return String(this.props.operator.fn(Number(this.props.partial), Number(this.props.value)));
+  }
+
+  static initial() {
+    return new State({
+      partial: "0",
+      operator: new Operators.Init(),
+      value: "",
+      reset: false
+    });
   }
 }

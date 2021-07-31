@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { Digit, DIGITS, Digits } from '../utils/digits';
-import { Operator, Operators } from '../utils/operators';
+import { Operator, OperatorInstances } from '../utils/operators';
 import { SpecialButtons } from './special-button/special-buttons';
 
 @Component({
@@ -18,6 +18,6 @@ export class KeysComponent {
   constructor(
     @Inject(DIGITS) readonly digits: Digits,
     readonly SpecialButtons: SpecialButtons,
-    readonly Operators: Operators
+    readonly operators: OperatorInstances
   ) { }
 }

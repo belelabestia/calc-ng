@@ -1,19 +1,16 @@
-import { Injectable } from "@angular/core";
 import { State } from "./state";
-import { AppService } from "../app.service";
 import { Digit } from "./digits";
 import { Operator } from "./operators";
+import { Injectable } from "@angular/core";
 
 export interface Action {
   apply(state: State): State;
 }
 
 class AddDecimalSeparator implements Action {
-  constructor(private initial: State) { }
-
   apply(state: State): State {
     return new State({
-      ...state.resetIfNeeded(this.initial),
+      ...state.resetIfNeeded(),
       value: state.reset
         ? "0."
         : (state.value === "" ? "0" : state.value) + (state.value.includes(".") ? "" : ".")
@@ -36,11 +33,11 @@ class AddOperator implements Action {
 }
 
 class AddDigit implements Action {
-  constructor(private digit: Digit, private initial: State) { }
+  constructor(private digit: Digit) { }
 
   apply(state: State): State {
     return new State({
-      ...state.resetIfNeeded(this.initial),
+      ...state.resetIfNeeded(),
       value: state.reset
         ? this.digit
         : (state.value === "0" ? "" : state.value) + this.digit,
@@ -49,8 +46,6 @@ class AddDigit implements Action {
 }
 
 class Result implements Action {
-  constructor(private initial: State) { }
-
   apply(state: State): State {
     return new State({
       ...state.props,
@@ -61,23 +56,26 @@ class Result implements Action {
 }
 
 class Reset implements Action {
-  constructor(private initial: State) { }
-
   apply(_: State): State {
-    return this.initial;
+    return State.initial();
   }
+}
+
+export const Actions = {
+  AddDecimalSeparator,
+  Result,
+  Reset,
+  AddOperator,
+  AddDigit
 }
 
 @Injectable({
   providedIn: 'root'
 })
-export class Actions {
-  AddDecimalSeparator = new AddDecimalSeparator(this.app.initialState);
-  Result = new Result(this.app.initialState);
-  Reset = new Reset(this.app.initialState);
-
-  constructor(private app: AppService) { }
-
-  AddOperator(operator: Operator) { return new AddOperator(operator); }
-  AddDigit(digit: Digit) { return new AddDigit(digit, this.app.initialState); }
+export class ActionInstances {
+  addDecimalSeparator() { return new Actions.AddDecimalSeparator(); }
+  result() { return new Actions.Result(); }
+  reset() { return new Actions.Reset(); }
+  addOperator(operator: Operator) { return new Actions.AddOperator(operator); }
+  addDigit(digit: Digit) { return new Actions.AddDigit(digit); }
 }

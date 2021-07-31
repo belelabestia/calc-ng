@@ -30,13 +30,21 @@ class Divide implements Operator {
   fn(a: number, b: number) { return a / b; }
 }
 
+export const Operators = {
+  Init,
+  Add,
+  Subtract,
+  Multiply,
+  Divide
+}
+
 @Injectable({
   providedIn: 'root'
 })
-export class Operators {
-  Init = new Init();
-  Add = new Add();
-  Subtract = new Subtract();
-  Multiply = new Multiply();
-  Divide = new Divide();
+export class OperatorInstances {
+  init() { return new Operators.Init(); }
+  add() { return new Operators.Add(); }
+  subtract() { return new Operators.Subtract(); }
+  multiply() { return new Operators.Multiply(); }
+  divide() { return new Operators.Divide(); }
 }

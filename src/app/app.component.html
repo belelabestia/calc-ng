@@ -4,9 +4,9 @@
   [value]="s.value"
 ></app-display>
 <app-keys
-  (digit)="onDigit($event)"
-  (decimalSeparator)="onDecimalSeparator()"
-  (operator)="onOperator($event)"
-  (equals)="onEquals()"
-  (cancel)="onCancel()"
+  (digit)="app.dispatch(actions.addDigit($event))"
+  (decimalSeparator)="app.dispatch(actions.addDecimalSeparator())"
+  (operator)="app.dispatch(actions.addOperator($event))"
+  (equals)="app.dispatch(actions.result())"
+  (cancel)="app.dispatch(actions.reset())"
 ></app-keys>
