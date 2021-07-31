@@ -1,4 +1,4 @@
-<app-display *ngIf="state.stream | async as s"
+<app-display *ngIf="app.state | async as s"
   [partial]="s.partial"
   [operator]="s.operator"
   [value]="s.value"
